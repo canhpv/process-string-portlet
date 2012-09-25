@@ -1,0 +1,55 @@
+  <%
+        /**
+         * Created by The eXo Platform SAS
+         * Author : eXoPlatform
+         *          canhpv@exoplatform.com
+         * Sep 24, 2012
+         */
+    %>
+<script>    
+
+function getRestServicesReserve()
+ {
+	var valuea = document.getElementById("valuea").value;
+	var url = "http://localhost:8080/ecmdemo/rest-ecmdemo/rest/reverse/"+valuea;   
+	var client = new XMLHttpRequest();
+	client.open("GET", url, false);
+
+	client.setRequestHeader("Content-Type", "text/plain");
+
+	client.send(url);
+
+	if (client.status == 200)
+	    alert( client.responseText)
+	else
+	    alert( client.status + " " + client.statusText + ".");    
+}  
+
+function getRestServicesMix()
+ {
+	var valuea = document.getElementById("valuea2").value;
+	var valueb = document.getElementById("valueb2").value;
+	var url = "http://localhost:8080/ecmdemo/rest-ecmdemo/rest/mix/"+valuea+"/"+valueb;   
+
+	var client = new XMLHttpRequest();
+	client.open("GET", url, false);
+
+	client.setRequestHeader("Content-Type", "text/plain");
+
+	client.send(url);
+
+	if (client.status == 200)
+	    alert( client.responseText)
+	else
+	    alert( client.status + " " + client.statusText + ".");    
+}  
+</script>
+
+ <strong>Example 1: Reserve string</strong>
+ <input id="valuea" type="text" name="valuea"/>   
+ <button onclick="getRestServicesReserve()">Click</button>
+ <br/>
+ <strong>Example 2: Mix string</strong>
+ <input id="valuea2" type="text" name="valuea2"/> +  <input id="valueb2" type="text" name="valueb2"/>
+   
+ <button onclick="getRestServicesMix()">Click</button>
